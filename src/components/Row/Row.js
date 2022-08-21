@@ -1,14 +1,14 @@
 import movieTrailer from "movie-trailer";
 import React, { useEffect, useState } from "react";
 import YouTube from "react-youtube";
-import axios from "../axios";
+import axios from "../../axios";
 import "./Row.css";
 const base_url = "https://image.tmdb.org/t/p/w500";
 
 function Row({ title, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
-
+  
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(fetchUrl);

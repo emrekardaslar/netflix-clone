@@ -2,8 +2,9 @@ import movieTrailer from "movie-trailer";
 import React, { useEffect, useState } from "react";
 import YouTube from "react-youtube";
 import axios from "../../axios";
+import MovieDetail from "../MovieDetail/MovieDetail";
 import "./Row.css";
-const base_url = "https://image.tmdb.org/t/p/w500";
+import { base_url } from "../../constants";
 
 function Row({ title, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
@@ -67,7 +68,8 @@ function Row({ title, fetchUrl, isLargeRow }) {
           );
         })}
       </div>
-      {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+      {/* {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />} */}
+      {trailerUrl && <MovieDetail movie={selectedMovie} trailerUrl={trailerUrl} />}
     </div>
   );
 }

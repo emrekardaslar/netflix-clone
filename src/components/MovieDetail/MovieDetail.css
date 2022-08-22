@@ -20,21 +20,20 @@
 }
 
 .movie-detail {
-    column-count: 2;
-    column-width: 0px; 
+    display: flex;
 }
 
-.movie-detail__poster {
-    left: 20px;
-    width: 50%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;   
-    object-fit: contain;
-    position: relative;  
+.movie-detail__poster { 
+    display: inline-block;
+    width: 20%;
+    height: 20%;
+    padding: 10px;
+    /* object-fit: contain; */
 }
 
 .movie-detail__data {
-    overflow: auto;
+    display: inline-block;
+    width: 45%;
+    height: 100%;
+    margin-left: 100px;
 }

@@ -39,6 +39,11 @@ function MovieDetail({ movie }) {
             <h1>{movie.name ? movie.name : movie.title}</h1>
             <h3>{Math.round(movie.vote_average * 10) / 10}</h3>
             <p>{movie.overview}</p>
+            <br></br>
+            <button className='detail__button'>Play</button>
+            <button className='detail__button'>Add To List</button>
+            <br></br>
+            <br></br>
             {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
         </div>
        

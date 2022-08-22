@@ -20,6 +20,9 @@ function Row({ title, fetchUrl, isLargeRow }) {
     if (movie !== selectedMovie) {
       setSelectedMovie(movie)
     }
+    else {
+      setSelectedMovie("")
+    }
   };
 
   return (

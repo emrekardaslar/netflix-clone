@@ -1,6 +1,4 @@
-import movieTrailer from "movie-trailer";
 import React, { useEffect, useState } from "react";
-import YouTube from "react-youtube";
 import axios from "../../axios";
 import MovieDetail from "../MovieDetail/MovieDetail";
 import "./Row.css";
@@ -8,7 +6,6 @@ import { base_url } from "../../constants";
 
 function Row({ title, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
-  const [trailerUrl, setTrailerUrl] = useState("");
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
@@ -19,33 +16,9 @@ function Row({ title, fetchUrl, isLargeRow }) {
     fetchData();
   }, [fetchUrl]);
 
-  const opts = {
-    height: "390",
-    width: "100%",
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
-  };
-
-  const findTrailer = async (movie) => {
-    movieTrailer(movie.title || movie.name || movie.original_name)
-      .then((url) => {
-        const urlParams = new URLSearchParams(new URL(url).search);
-        setTrailerUrl(urlParams.get("v"));
-        setSelectedMovie(movie);
-      })
-      .catch((err) => console.log(err));
-  };
-
   const handleClick = (movie) => {
-    if (trailerUrl && movie === selectedMovie) {
-      setTrailerUrl("");
-    } else if (movie !== selectedMovie) {
-      setSelectedMovie(movie);
-      findTrailer(movie);
-    } else {
-      findTrailer(movie);
+    if (movie !== selectedMovie) {
+      setSelectedMovie(movie)
     }
   };
 
@@ -68,8 +41,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
           );
         })}
       </div>
-      {/* {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />} */}
-      {trailerUrl && <MovieDetail movie={selectedMovie} trailerUrl={trailerUrl} />}
+      {selectedMovie && <MovieDetail movie={selectedMovie}/> }
     </div>
   );
 }

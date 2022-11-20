@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Netflix Clone Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Clone Netflix Project that you can list the movies and watch their trailers.
 
 ## Create your .env file
 
